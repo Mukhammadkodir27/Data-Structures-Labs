@@ -1,0 +1,75 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+
+void print_squares(int sz)
+{
+    vector<int> squares;
+    for(int i=0; i<sz; ++i)
+    {
+        squares.push_back(i*i);
+    }
+    cout<<"{";
+    for(int i=0; i<squares.size(); ++i)
+    {
+        cout<<squares.at(i)<<" ";
+    }
+    cout<<"}"<<endl;
+}
+
+
+///Here we will try to pass vector as an argument
+
+void temp_v(vector<int> gr)
+{
+    for(int i=0; i<gr.size(); ++i)
+    {
+        cout<<gr.at(i)<<"\t";
+    }
+}
+
+
+
+int main()
+{
+    vector<int> xs;
+    xs.push_back(3);
+    xs.push_back(1);
+    //xs.pop_back();
+
+    cout<<xs.size()<<xs.capacity()<<endl;
+
+    ///Important tip:
+    // .size()   is used to know the size, the number of elements in the vector
+    // .capacity()  is used to know the capacity of the vector
+
+    print_squares(10);
+    print_squares(20);
+    print_squares(30);
+
+    vector<float> grades(140);
+    cout<<grades.size()<<" "<<grades.capacity()<<grades[0]<<endl;
+
+    //Here is interesting techniques:
+    //If you write like vector<int> grades(15, 5);
+    //all 15 grades will be equal to 5, I mean all 15 elements will have the value 5
+    //let's try this out
+
+    vector<int> grades_s(25, 5);
+    cout<<grades_s.size()<<" "<<grades_s.capacity()<<endl;
+    for(int i=0; i<grades_s.size(); i++)
+    {
+        cout<<grades_s.at(i)<<" ";
+    }
+    cout<<endl;
+    ///We can also pass another vector as an argument to a constructor:
+
+    vector<int> grades_copy(grades_s);
+    cout<<"The size of the copied vector: "<<grades_copy.size()<<endl;
+
+
+    temp_v(grades_copy);
+
+   return 0;
+}
