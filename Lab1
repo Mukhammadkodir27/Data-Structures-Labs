@@ -1,1 +1,78 @@
+/// Templates
+#include <iostream>
+#include <string>
+using namespace std;
+
+int minimum(int a, int b)
+{
+    if(a<b)
+    {
+        return a;   // or you can write it like this:
+    }
+    else            // (a<b) ? a:b;
+    {
+        return b;
+    }
+}
+
+
+float minimum(float a, float b)
+{
+    if(a<b)
+    {
+        return a;
+    }
+    else
+    {
+        return b;
+    }
+}
+
+
+//Instead of writing a function with the same body over and over again,
+//we can write a function template.
+
+template<class T>
+T minimum(T a, T b)
+{
+    if(a<b)
+    {
+        return a;
+    } else
+    {
+        return b;
+    }
+}
+
+int main()
+{
+    int a=7;
+    int b=6;
+
+    cout<<minimum(a, b)<<endl;
+
+    float c=1.7;
+    float d=2.3;
+
+    cout<<minimum(c, d)<<endl;
+
+    string e="abc";
+    string f="defg";
+
+    cout<<minimum(e, f)<<endl;
+
+
+    int g=8;
+    double h=7.3;
+
+    cout<<minimum<double>(g, h)<<endl;
+    cout<<minimum<int>(g, h)<<endl;
+    cout<<minimum<char>(g, h)<<endl;
+
+    return 0;
+}
+
+
+
+
 
