@@ -1,0 +1,47 @@
+/// Constructors and Destructors in C++ using with Struct
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Silly
+{
+    Silly()
+    {
+        cout<<"an instance of Silly is being created"<<endl;
+    }
+
+    ~Silly()
+    {
+        cout<<"an instance of Silly is being destroyed"<<endl;
+    }
+};
+//struct Silly s;
+
+struct IntArray
+{
+    int size;
+    int *data;
+
+    IntArray(int _size);
+    IntArray(const IntArray &o);
+    ~IntArray();
+
+};
+
+IntArray::IntArray(int _size)
+    :size{_size}, data{new int[size]} {}
+IntArray::IntArray(const IntArray &o)
+    :size{o.size}, data{new int[size]}
+Intarray::~IntArray() {delete []data; }  //here we are deleting data as it is dynamic array.
+                                         //after using it we have to clear the memory
+
+
+int main()
+{
+    Silly x;
+    Silly y;
+    Silly m;
+
+    return 0;
+}
