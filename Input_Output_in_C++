@@ -1,0 +1,135 @@
+/// Files and Operators lecture.
+/// Input and Output
+#include <iostream>
+#include <string>
+using namespace std;
+
+
+//cin is used to input a value
+//cout is used to output a value
+
+int main()
+{
+    string s1;
+    getline(cin, s1);
+    cout<<s1<<endl;
+    cout<<boolalpha<<cout.good()<<endl;
+    int i;
+    cin>>i;
+    cout<<"read int: "<<i<<" "<<endl;
+    cout<<boolalpha<<cin.fail()<<endl;
+
+    /// bear in mind, cin.fail() function is used to check the
+
+    string word;
+    cin>>word;
+    cout<<"read one word: "<<word<<" "<<endl;
+
+    float f;
+    cin>>f;
+    cout<<"read float: "<<f<<" "<<endl;
+
+    string line;
+    getline(cin, line);
+    cout<<"read line: '"<<line<<"'"<<endl;
+
+    cin>>i>>f;
+    cout<<i<<" "<<f<<endl;
+
+
+    //============================
+    /*
+    Operators are functions, called when special syntax is used (in this case, whenever the symbol << is
+    used, a special function operator<< is called). The code above can also be written as:
+    */
+    cout<<"Hello"<<endl;
+    int num;
+    cin.operator>>(num);
+    cout.operator<<(num);
+
+
+
+    int random_number;
+    cin
+       //we input 123 and we press the enter key
+       //this stores the characters '1' '2' '3' and '\n' in a character array
+       //
+       //buffer: 123\n
+       //index:  ^
+       >>random_number
+       //operator>> reads from the buffer
+       //since the argument is an int, the characters '1' '2' '3' are read
+       //the index is moved to point to the first unread character in the array,
+       //in this case the character '\n'
+       //
+       //buffer: 123\n
+       //index:     ^
+       ;
+
+
+     cin
+        //we input 123asdf and we press the enter key
+        //this stores the characters '1' '2' '3' 'a' 's' 'd' 'f' and '\n' in a
+        // character array, buffer
+        //
+        //buffer: 123asdf\n
+        //index:  ^
+        >>random_number
+        //operator>> read from the buffer
+        //since the argument is an integer, the characters '1' '2' '3' are read
+        //the index is moved to point to the first unread character in the array, in
+        //this case the character 'a'
+        //
+        //buffer: 123asdf\n
+        //index:      ^
+        ;
+
+
+        ///Just  a reminder:
+        /// .eof(), .fail(), .bad(), .good()
+
+    return 0;
+}
+
+
+==================================================================================
+
+///Idiomatic reading
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main()
+{
+    int sum=0;
+    int value;
+    cout<<"Enter an integer: "<<endl;
+    cin.operator>>(value);
+    while(cin.good())
+    {
+        sum+=value;
+        cin>>value;
+    }
+    cout<<"sum of inputted integers is "<<sum<<endl;
+
+
+//    while(cin>>value)
+//    {
+//        sum+=value;
+//    }
+//    cout<<"sum is: "<<sum<<endl;
+
+    cout<<"Let's add three numbers and take the sum of them: "<<endl;
+    int n1, n2, n3;
+    int collect=0;
+    while(cin>>n1>>n2>>n3)
+    {
+        collect=n1+n2+n3;
+        break;
+    }
+    cout<<"Result is: "<<collect<<endl;
+
+    return 0;
+}
+
